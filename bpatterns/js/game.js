@@ -40,13 +40,18 @@ function update(dt) {
 }
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    draw_path_preview(emitters[0].fn, emitters[0].params, emitters[0].config.speed, emitters[0].config.kill_time);
+    draw_path_preview(emitters[0]);
     if (shoot_bullets) {
         bullet_pool.forEach(b => bullet_draw(b));
     }
 }
-let last_time = 0;
+let last_time = -1;
 function loop(time_stamp) {
+    if (last_time === -1) {
+        last_time = time_stamp;
+        requestAnimationFrame(loop);
+        return;
+    }
     const dt = (time_stamp - last_time) / 1000;
     last_time = time_stamp;
     input();

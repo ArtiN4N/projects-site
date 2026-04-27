@@ -31,22 +31,25 @@ function epitrochoid_path(t, params) {
         y: combined_amp * Math.sin(t) - params.delta * Math.sin(combined_amp / params.amp_b * t + params.rotation),
     };
 }
-function draw_path_preview(fn, params, speed, kill_time) {
+function draw_path_preview(emitter) {
     const steps = 200;
     const origin_x = canvas.width / 2;
     const origin_y = canvas.height / 2;
     ctx.beginPath();
     ctx.strokeStyle = "#fbbbad";
     ctx.lineWidth = 1;
-    for (let i = 0; i <= steps; i++) {
-        const t = (i / steps) * kill_time * speed;
-        const pos = fn(t, params);
-        const screen_x = origin_x + pos.x;
-        const screen_y = origin_y + pos.y;
-        if (i === 0)
-            ctx.moveTo(screen_x, screen_y);
-        else
-            ctx.lineTo(screen_x, screen_y);
+    for (let i = 0; i < emitter.config.bullet_count; i++) {
+        const params = Object.assign(Object.assign({}, emitter.params), { rotation: emitter.params.rotation + (i / emitter.config.bullet_count) * Math.PI * 2 });
+        for (let i = 0; i <= steps; i++) {
+            const t = (i / steps) * emitter.config.kill_time * emitter.config.speed;
+            const pos = emitter.fn(t, params);
+            const screen_x = origin_x + pos.x + emitter.pos.x;
+            const screen_y = origin_y + pos.y + emitter.pos.y;
+            if (i === 0)
+                ctx.moveTo(screen_x, screen_y);
+            else
+                ctx.lineTo(screen_x, screen_y);
+        }
     }
     ctx.stroke();
 }

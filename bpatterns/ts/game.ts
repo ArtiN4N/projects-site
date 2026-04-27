@@ -47,7 +47,7 @@ function update(dt: number): void {
 
 function draw(): void {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    draw_path_preview(emitters[0].fn, emitters[0].params, emitters[0].config.speed, emitters[0].config.kill_time)
+    draw_path_preview(emitters[0])
     if (shoot_bullets) { bullet_pool.forEach(b => bullet_draw(b)) }
 }
 
