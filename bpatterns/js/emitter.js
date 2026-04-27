@@ -1,4 +1,12 @@
 "use strict";
+function build_emitter_arc_table(emitter) {
+    if (emitter.fn === linear_path) {
+        emitter.arc_table = null;
+    }
+    else {
+        emitter.arc_table = build_arc_table(emitter.fn, emitter.params, emitter.config.kill_time, emitter.config.speed);
+    }
+}
 function emitter_update(emitter, dt) {
     if (!emitter.active)
         return;
@@ -9,7 +17,7 @@ function emitter_update(emitter, dt) {
     for (let i = 0; i < emitter.config.bullet_count; i++) {
         // offset rotation per bullet to spread them evenly in a burst
         const params = Object.assign(Object.assign({}, emitter.params), { rotation: emitter.params.rotation + (i / emitter.config.bullet_count) * Math.PI * 2 });
-        bullet_spawn(emitter.pos, emitter.fn, params, emitter.config);
+        bullet_spawn(emitter.pos, emitter.fn, params, emitter.config, emitter.arc_table);
     }
 }
 function update_all(emitters, dt) {

@@ -33,14 +33,15 @@ const emitters = [{
             fire_rate: 1,
         },
         fire_timer: 0,
+        arc_table: null,
         active: true,
     }];
 function update(dt) {
     update_all(emitters, dt);
 }
-function draw() {
+function draw(dt) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    draw_path_preview(emitters[0]);
+    draw_path_preview(emitters[0], dt);
     if (shoot_bullets) {
         bullet_pool.forEach(b => bullet_draw(b));
     }
@@ -56,7 +57,7 @@ function loop(time_stamp) {
     last_time = time_stamp;
     input();
     update(dt);
-    draw();
+    draw(dt);
     requestAnimationFrame(loop);
 }
 let new_game = true;
@@ -67,6 +68,7 @@ function update_params() {
         window.alert(`Invalid Inputs! ${crash_text}`);
         return;
     }
+    build_emitter_arc_table(emitters[0]);
     if (new_game) {
         requestAnimationFrame(loop);
         new_game = false;
@@ -141,6 +143,7 @@ function read_config_inputs() {
             fire_rate,
         },
         fire_timer: fire_rate,
+        arc_table: null,
         active: true,
     };
     return [false, ""];

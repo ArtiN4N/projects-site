@@ -4,7 +4,16 @@ interface Emitter {
     params: Path_Parameters,
     config: Pattern_Config,
     fire_timer: number,
+    arc_table: Arc_Table | null,
     active: boolean,
+}
+
+function build_emitter_arc_table(emitter: Emitter): void {
+    if (emitter.fn === linear_path) {
+        emitter.arc_table = null
+    } else {
+        emitter.arc_table = build_arc_table(emitter.fn, emitter.params, emitter.config.kill_time, emitter.config.speed)
+    }
 }
 
 function emitter_update(emitter: Emitter, dt: number): void {
@@ -21,7 +30,7 @@ function emitter_update(emitter: Emitter, dt: number): void {
             rotation: emitter.params.rotation + (i / emitter.config.bullet_count) * Math.PI * 2,
         }
 
-        bullet_spawn(emitter.pos, emitter.fn, params, emitter.config)
+        bullet_spawn(emitter.pos, emitter.fn, params, emitter.config, emitter.arc_table)
     }
 }
 

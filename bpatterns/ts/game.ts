@@ -38,6 +38,7 @@ const emitters: Emitter[] = [{
         fire_rate: 1,
     },
     fire_timer: 0,
+    arc_table: null,
     active: true,
 }]
 
@@ -45,9 +46,9 @@ function update(dt: number): void {
     update_all(emitters, dt)
 }
 
-function draw(): void {
+function draw(dt: number): void {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    draw_path_preview(emitters[0])
+    draw_path_preview(emitters[0], dt)
     if (shoot_bullets) { bullet_pool.forEach(b => bullet_draw(b)) }
 }
 
@@ -65,7 +66,7 @@ function loop(time_stamp: number): void {
 
     input()
     update(dt)
-    draw()
+    draw(dt)
 
     requestAnimationFrame(loop)
 }
@@ -80,6 +81,8 @@ function update_params(): void {
         window.alert(`Invalid Inputs! ${crash_text}`)
         return
     }
+
+    build_emitter_arc_table(emitters[0])
 
     if (new_game) {
         requestAnimationFrame(loop)
@@ -153,6 +156,7 @@ function read_config_inputs(): [boolean, string] {
             fire_rate,
         },
         fire_timer: fire_rate,
+        arc_table: null,
         active: true,
     }
 

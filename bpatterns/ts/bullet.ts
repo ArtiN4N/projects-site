@@ -9,6 +9,8 @@ interface Bullet {
     params: Path_Parameters,
     config: Pattern_Config,
     timer: number,
+    distance: number,
+    arc_table: Arc_Table | null,
     active: boolean,
 }
 
@@ -19,10 +21,12 @@ const bullet_pool: Bullet[] = Array.from({ length: MAX_BULLETS }, () => ({
     params: { amp_a: 0, amp_b: 0, freq_a: 0, freq_b: 0, delta: 0, rotation: 0 },
     config: { speed: 0, kill_time: 0, bullet_count: 0, fire_rate: 0 },
     timer: 0,
+    distance: 0,
+    arc_table: null,
     active: false,
 }))
 
-function bullet_spawn(spawn_pos: Vector, fn: Path_Function, params: Path_Parameters, config: Pattern_Config): void {
+function bullet_spawn(spawn_pos: Vector, fn: Path_Function, params: Path_Parameters, config: Pattern_Config, arc_table: Arc_Table | null): void {
     const bullet = bullet_pool.find(b => !b.active)
     if (!bullet) return
 
@@ -31,6 +35,8 @@ function bullet_spawn(spawn_pos: Vector, fn: Path_Function, params: Path_Paramet
     bullet.params = params
     bullet.config = config
     bullet.timer = 0
+    bullet.distance = 0
+    bullet.arc_table = arc_table
     bullet.active = true
 }
 
@@ -41,8 +47,14 @@ function reset_bullet_pool(): void {
 }
 
 function bullet_position(bullet: Bullet): Vector {
-    const offset = bullet.fn(bullet.timer * bullet.config.speed, bullet.params)
+    let t: number;
+    if (bullet.arc_table) {
+        t = arc_to_t(bullet.arc_table, bullet.distance)
+    } else {
+        t = bullet.timer * bullet.config.speed
+    }
 
+    const offset = bullet.fn(t, bullet.params)
     return {
         x: bullet.spawn_pos.x + offset.x,
         y: bullet.spawn_pos.y + offset.y,
@@ -53,6 +65,8 @@ function bullet_update(bullet: Bullet, dt: number): void {
     if (!bullet.active) return
 
     bullet.timer += dt
+    bullet.distance += bullet.config.speed * dt
+
     if (bullet.timer >= bullet.config.kill_time) bullet.active = false
 }
 
