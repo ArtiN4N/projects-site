@@ -43,6 +43,8 @@ function draw_path_preview(emitter, dt) {
         let t = 0;
         let dist = 0;
         let sample_dt = dt;
+        const first_pos = emitter.fn(0, params);
+        ctx.moveTo(origin_x + first_pos.x + emitter.pos.x, origin_y + first_pos.y + emitter.pos.y);
         while (t <= emitter.config.kill_time) {
             t += sample_dt;
             dist += emitter.config.speed * sample_dt;
@@ -56,28 +58,8 @@ function draw_path_preview(emitter, dt) {
             const fpos = emitter.fn(ft, params);
             const screen_x = origin_x + fpos.x + emitter.pos.x;
             const screen_y = origin_y + fpos.y + emitter.pos.y;
-            if (t === 0)
-                ctx.moveTo(screen_x, screen_y);
-            else
-                ctx.lineTo(screen_x, screen_y);
+            ctx.lineTo(screen_x, screen_y);
         }
-        /*for (let j = 0; j <= steps; j++) {
-            let t: number
-            if (emitter.arc_table) {
-                const max_distance = emitter.config.kill_time * emitter.config.speed
-                const distance = (j / steps) * max_distance
-                t = arc_to_t(emitter.arc_table, distance)
-            } else {
-                t = (j / steps) * emitter.config.kill_time * emitter.config.speed
-            }
-
-            const pos = emitter.fn(t, params)
-            const screen_x = origin_x + pos.x + emitter.pos.x
-            const screen_y = origin_y + pos.y + emitter.pos.y
-
-            if (j === 0) ctx.moveTo(screen_x, screen_y)
-            else ctx.lineTo(screen_x, screen_y)
-        }*/
     }
     ctx.stroke();
 }
