@@ -1,0 +1,48 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+  --color-background: #292831;
+  --color-foreground: #292831;
+  --color-text: #4a7a96;
+  --color-button-text: #ee8695;
+  --color-border: #4a7a96;
+  --color-button-border: #fbbbad;
+  --color-input-background: #333f58;
+
+  --font-primary: 'Intel One Mono', monospace;
+
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+    background-color: var(--color-background);
+    font-family: var(--font-primary);
+}
+
+p.decoration_arrow {
+    position: absolute;
+
+    width: calc(50vw - 40vh - 22vw);
+
+    left: 22vw;
+    top: 50vh;
+    transform: translateY(-50%);
+
+    margin: 0;
+    text-align: center;
+
+    color: var(--color-button-text);
+    font-size: 5rem;
+}

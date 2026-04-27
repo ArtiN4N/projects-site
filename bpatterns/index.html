@@ -1,7 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head></head>
+	<head>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/control_pad.css">
+		<link rel="stylesheet" href="css/pattern_window.css">
+	</head>
 	<body>
-		<p>hello World</p>
+		<div class="control_pad">
+			<h2>Pattern Config</h2>
+
+			<label>Start Position</label>
+			<div class="input_row">
+				<input type="number" id="start_pos_x" placeholder="X" />
+				<input type="number" id="start_pos_y" placeholder="Y" />
+			</div>
+
+			<label for="bullet_speed">Bullet Speed</label>
+			<div class="input_row">
+				<input type="number" id="bullet_speed" min="0" />
+				<span>px/s</span>
+			</div>
+			
+			<label for="kill_time">Kill Time</label>
+			<div class="input_row">
+				<input type="number" id="kill_time" min="0" step="0.1" />
+				<span>s</span>
+			</div>
+
+			<label for="bullet_count">Bullet Count</label>
+			<input type="number" id="bullet_count" min="0" />
+
+			<label for="fire_rate">Fire Rate</label>
+			<div class="input_row">
+				<input type="number" id="fire_rate" min="0" step="0.1" />
+				<span>s</span>
+			</div>
+
+			<h2>Path Config</h2>
+
+			<label for="path_function">Path Function</label>
+			<select id="path_function">
+				<option value="linear">Linear</option>
+				<option value="lissajous">Lissajous</option>
+				<option value="spiral">Spiral</option>
+				<option value="rose">Rose</option>
+				<option value="epitrochoid">Epitrochoid</option>
+			</select>
+
+			<label>Amplitudes</label>
+			<div class="input_row">
+				<input type="number" id="amp_a" placeholder="A" />
+				<input type="number" id="amp_b" placeholder="B" />
+			</div>
+
+			<label>Frequencies</label>
+			<div class="input_row">
+				<input type="number" id="freq_a" placeholder="A" />
+				<input type="number" id="freq_b" placeholder="B" />
+			</div>
+
+			<label for="delta">Delta</label>
+			<div class="input_row">
+				<input type="number" id="delta" step="0.1" />
+				<span>× π</span>
+			</div>
+
+			<label for="rotation">Rotation</label>
+			<div class="input_row">
+				<input type="number" id="rotation" step="0.1" />
+				<span>× π</span>
+			</div>
+
+			<div class="input_row">
+				<label for="shoot_bullets">Shoot Bullets</label>
+				<input type="checkbox" id="shoot_bullets" />
+			</div>
+
+			<button onclick="update_params()">Spawn</button>
+		</div>
+
+		<p class="decoration_arrow">→</p>
+
+		<canvas class="pattern_window" id="game_canvas"></canvas>
+
+		<script src="js/inputs.js" defer></script>
+		<script src="js/path.js" defer></script>
+		<script src="js/pattern.js" defer></script>
+		<script src="js/emitter.js" defer></script>
+		<script src="js/bullet.js" defer></script>
+		<script src="js/game.js" defer></script>
 	</body>
 </html>
