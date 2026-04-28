@@ -220,7 +220,7 @@ function injectStyles() {
       color: #ee8695;
     }
     .ps-item--selected:hover {
-      background: #ee8695;
+      background: #fbbbad;
     }
 
     .ps-loading,
