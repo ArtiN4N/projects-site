@@ -209,7 +209,7 @@ function injectStyles() {
       flex-shrink: 0;
     }
     .ps-item:hover {
-      background: #cd998e;
+      background: #c79d94;
       color: #ffffff;
     }
     .ps-item--selected {
