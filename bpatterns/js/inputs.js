@@ -142,3 +142,11 @@ function load_pattern_config(config_name) {
         update_config_inputs(yield inputs);
     });
 }
+function load_pattern_names() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch(`/api/bpatterns/list/`);
+        if (!response.ok)
+            throw new Error(`List failed: ${response.status}`);
+        return response.json();
+    });
+}

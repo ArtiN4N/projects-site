@@ -150,3 +150,11 @@ async function load_pattern_config(config_name: string): Promise<void> {
     const inputs = response.json() as Promise<Config_Values>
     update_config_inputs(await inputs)
 }
+
+async function load_pattern_names(): Promise<string[]> {
+    const response = await fetch(`/api/bpatterns/list/`)
+
+    if (!response.ok) throw new Error(`List failed: ${response.status}`)
+
+    return response.json() as Promise<string[]>
+}
