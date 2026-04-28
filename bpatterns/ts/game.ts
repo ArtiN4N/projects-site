@@ -74,7 +74,7 @@ function loop(time_stamp: number): void {
 
 let new_game: boolean = true
 
-function update_params(): void {
+function update_params(inputs: Config_Values = read_config_inputs()): void {
     reset_bullet_pool()
 
     const [should_crash, crash_text] = update_config_inputs()

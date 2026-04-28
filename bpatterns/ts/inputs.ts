@@ -142,13 +142,12 @@ async function save_pattern_config(): Promise<void> {
     if (!response.ok) throw new Error(`Save failed: ${response.status}`)
 }
 
-async function load_pattern_config(config_name: string): Promise<void> {
+async function load_pattern_config(config_name: string): Promise<Config_Values> {
     const response = await fetch(`/api/bpatterns/load/${config_name}`)
 
     if (!response.ok) throw new Error(`Load failed: ${response.status}`)
 
-    const inputs = response.json() as Promise<Config_Values>
-    update_config_inputs(await inputs)
+    return response.json()
 }
 
 async function load_pattern_names(): Promise<string[]> {

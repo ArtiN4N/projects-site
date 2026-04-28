@@ -48,7 +48,6 @@ function update_config_inputs(inputs = read_config_inputs()) {
     if (inputs.fire_rate <= 0) {
         return [true, "Please enter a non-zero positive integer for fire_rate!"];
     }
-    console.log(inputs);
     apply_config_inputs(inputs);
     return [false, ""];
 }
@@ -139,8 +138,7 @@ function load_pattern_config(config_name) {
         const response = yield fetch(`/api/bpatterns/load/${config_name}`);
         if (!response.ok)
             throw new Error(`Load failed: ${response.status}`);
-        const inputs = response.json();
-        update_config_inputs(yield inputs);
+        return response.json();
     });
 }
 function load_pattern_names() {

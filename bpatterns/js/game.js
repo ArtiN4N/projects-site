@@ -62,7 +62,7 @@ function loop(time_stamp) {
     requestAnimationFrame(loop);
 }
 let new_game = true;
-function update_params() {
+function update_params(inputs = read_config_inputs()) {
     reset_bullet_pool();
     const [should_crash, crash_text] = update_config_inputs();
     if (should_crash) {
