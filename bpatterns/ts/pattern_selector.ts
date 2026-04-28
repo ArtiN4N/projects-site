@@ -242,7 +242,7 @@ function injectStyles(): void {
       flex-shrink: 0;
     }
     .ps-item:hover {
-      background: #333f58;
+      background: #cd998e;
       color: #ffffff;
     }
     .ps-item--selected {
@@ -254,6 +254,7 @@ function injectStyles(): void {
     }
     .ps-item--selected:hover {
       background: #fbbbad;
+      color: #292831;
     }
 
     .ps-loading,
