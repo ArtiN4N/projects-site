@@ -130,14 +130,14 @@ function injectStyles() {
 
     /* Popup */
     .ps-popup {
-      background: #1e1e1e;
-      border: 1px solid #3a3a3a;
+      background: #292831;
+      border: 1px solid #fbbbad;
       border-radius: 6px;
       width: 340px;
       max-height: 480px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 32px rgba(238,134,149,0.3);
       font-family: 'Consolas', 'Menlo', 'Monaco', monospace;
       overflow: hidden;
       animation: ps-drop 0.15s ease;
@@ -153,26 +153,26 @@ function injectStyles() {
       align-items: center;
       gap: 8px;
       padding: 10px 14px;
-      background: #252526;
+      background: #292831;
     }
     .ps-icon {
       width: 14px;
       height: 14px;
-      fill: #c5a028;
+      fill: #fbbbad;
       flex-shrink: 0;
     }
     .ps-title {
       font-size: 12px;
       font-weight: 600;
-      color: #cccccc;
+      color: #ee8695;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
     /* Divider */
     .ps-divider {
-      height: 1px;
-      background: #3a3a3a;
+      height: 2px;
+      background: #333f58;
     }
 
     /* List */
@@ -209,18 +209,18 @@ function injectStyles() {
       flex-shrink: 0;
     }
     .ps-item:hover {
-      background: #2a2d2e;
+      background: #333f58;
       color: #ffffff;
     }
     .ps-item--selected {
-      background: #094771;
+      background: #ee8695;
       color: #ffffff;
     }
     .ps-item--selected::before {
-      color: #4fc3f7;
+      color: #fbbbad;
     }
     .ps-item--selected:hover {
-      background: #0c5a8a;
+      background: #ee8695;
     }
 
     .ps-loading,
@@ -238,7 +238,7 @@ function injectStyles() {
       justify-content: flex-end;
       gap: 8px;
       padding: 10px 14px;
-      background: #252526;
+      background: #292831;
     }
     .ps-btn {
       font-family: inherit;
@@ -251,19 +251,19 @@ function injectStyles() {
     }
     .ps-btn-cancel {
       background: transparent;
-      border-color: #555;
+      border-color: #fbbbad;
       color: #cccccc;
     }
     .ps-btn-cancel:hover {
       background: #3a3a3a;
     }
     .ps-btn-load {
-      background: #0e639c;
+      background: #fbbbad;
       color: #ffffff;
-      border-color: #0e639c;
+      border-color: #ee8695;
     }
     .ps-btn-load:hover:not(:disabled) {
-      background: #1177bb;
+      background: #ee8695;
     }
     .ps-btn-load:disabled {
       opacity: 0.35;
