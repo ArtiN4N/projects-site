@@ -214,7 +214,7 @@ function injectStyles() {
     }
     .ps-item--selected {
       background: #fbbbad;
-      color: #ffffff;
+      color: #292831;
     }
     .ps-item--selected::before {
       color: #ee8695;
