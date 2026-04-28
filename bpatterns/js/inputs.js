@@ -48,6 +48,7 @@ function update_config_inputs(inputs = read_config_inputs()) {
     if (inputs.fire_rate <= 0) {
         return [true, "Please enter a non-zero positive integer for fire_rate!"];
     }
+    console.log(inputs);
     apply_config_inputs(inputs);
     return [false, ""];
 }
