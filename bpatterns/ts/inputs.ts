@@ -40,6 +40,26 @@ function read_config_inputs(): Config_Values {
     }
 }
 
+function write_config_inputs(cfg: Config_Values): void {
+    (document.getElementById("start_pos_x")  as HTMLInputElement).value = cfg.x.toString();
+    (document.getElementById("start_pos_y")  as HTMLInputElement).value = cfg.y.toString();
+    (document.getElementById("bullet_speed") as HTMLInputElement).value = cfg.speed.toString();
+    (document.getElementById("kill_time")    as HTMLInputElement).value = cfg.kill_time.toString();
+    (document.getElementById("bullet_count") as HTMLInputElement).value = cfg.bullet_count.toString();
+    (document.getElementById("fire_rate")    as HTMLInputElement).value = cfg.fire_rate.toString();
+
+    (document.getElementById("path_function") as HTMLInputElement).value = cfg.path_fn;
+    (document.getElementById("amp_a")    as HTMLInputElement).value = cfg.amp_a.toString();
+    (document.getElementById("amp_b")    as HTMLInputElement).value = cfg.amp_b.toString();
+    (document.getElementById("freq_a")   as HTMLInputElement).value = cfg.freq_a.toString();
+    (document.getElementById("freq_b")   as HTMLInputElement).value = cfg.freq_b.toString();
+    (document.getElementById("delta")    as HTMLInputElement).value = (cfg.delta    / Math.PI).toString();
+    (document.getElementById("rotation") as HTMLInputElement).value = (cfg.rotation / Math.PI).toString();
+
+    (document.getElementById("shoot_bullets") as HTMLInputElement).checked = cfg.draw_bullets;
+    (document.getElementById("show_pattern")  as HTMLInputElement).checked = cfg.draw_pattern;
+}
+
 function update_config_inputs(inputs: Config_Values = read_config_inputs()): [boolean, string] {
     if (isNaN(inputs.x) || isNaN(inputs.y) || isNaN(inputs.speed) || isNaN(inputs.kill_time) || isNaN(inputs.bullet_count) || isNaN(inputs.fire_rate)
         || isNaN(inputs.amp_a) || isNaN(inputs.amp_b) || isNaN(inputs.freq_a) || isNaN(inputs.freq_b) || isNaN(inputs.delta) || isNaN(inputs.rotation)

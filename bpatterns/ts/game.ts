@@ -82,6 +82,7 @@ function update_params(inputs: Config_Values = read_config_inputs()): void {
         window.alert(`Invalid Inputs! ${crash_text}`)
         return
     }
+    write_config_inputs(inputs)
 
     build_emitter_arc_table(emitters[0])
 

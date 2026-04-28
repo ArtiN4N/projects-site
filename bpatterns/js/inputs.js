@@ -28,6 +28,23 @@ function read_config_inputs() {
         x, y, speed, kill_time, bullet_count, fire_rate, path_fn, amp_a, amp_b, freq_a, freq_b, delta, rotation, draw_bullets, draw_pattern
     };
 }
+function write_config_inputs(cfg) {
+    document.getElementById("start_pos_x").value = cfg.x.toString();
+    document.getElementById("start_pos_y").value = cfg.y.toString();
+    document.getElementById("bullet_speed").value = cfg.speed.toString();
+    document.getElementById("kill_time").value = cfg.kill_time.toString();
+    document.getElementById("bullet_count").value = cfg.bullet_count.toString();
+    document.getElementById("fire_rate").value = cfg.fire_rate.toString();
+    document.getElementById("path_function").value = cfg.path_fn;
+    document.getElementById("amp_a").value = cfg.amp_a.toString();
+    document.getElementById("amp_b").value = cfg.amp_b.toString();
+    document.getElementById("freq_a").value = cfg.freq_a.toString();
+    document.getElementById("freq_b").value = cfg.freq_b.toString();
+    document.getElementById("delta").value = (cfg.delta / Math.PI).toString();
+    document.getElementById("rotation").value = (cfg.rotation / Math.PI).toString();
+    document.getElementById("shoot_bullets").checked = cfg.draw_bullets;
+    document.getElementById("show_pattern").checked = cfg.draw_pattern;
+}
 function update_config_inputs(inputs = read_config_inputs()) {
     if (isNaN(inputs.x) || isNaN(inputs.y) || isNaN(inputs.speed) || isNaN(inputs.kill_time) || isNaN(inputs.bullet_count) || isNaN(inputs.fire_rate)
         || isNaN(inputs.amp_a) || isNaN(inputs.amp_b) || isNaN(inputs.freq_a) || isNaN(inputs.freq_b) || isNaN(inputs.delta) || isNaN(inputs.rotation)) {

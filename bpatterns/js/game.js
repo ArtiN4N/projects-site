@@ -69,6 +69,7 @@ function update_params(inputs = read_config_inputs()) {
         window.alert(`Invalid Inputs! ${crash_text}`);
         return;
     }
+    write_config_inputs(inputs);
     build_emitter_arc_table(emitters[0]);
     if (new_game) {
         requestAnimationFrame(loop);
