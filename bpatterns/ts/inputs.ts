@@ -29,8 +29,8 @@ function read_config_inputs(): Config_Values {
     const amp_b     = parseFloat((document.getElementById("amp_b")    as HTMLInputElement).value)
     const freq_a    = parseFloat((document.getElementById("freq_a")   as HTMLInputElement).value)
     const freq_b    = parseFloat((document.getElementById("freq_b")   as HTMLInputElement).value)
-    const delta     = parseFloat((document.getElementById("delta")    as HTMLInputElement).value) * Math.PI
-    const rotation  = parseFloat((document.getElementById("rotation") as HTMLInputElement).value) * Math.PI
+    const delta     = parseFloat((document.getElementById("delta")    as HTMLInputElement).value)
+    const rotation  = parseFloat((document.getElementById("rotation") as HTMLInputElement).value)
 
     const draw_bullets = (document.getElementById("shoot_bullets") as HTMLInputElement).checked
     const draw_pattern = (document.getElementById("show_pattern") as HTMLInputElement).checked
@@ -53,8 +53,8 @@ function write_config_inputs(cfg: Config_Values): void {
     (document.getElementById("amp_b")    as HTMLInputElement).value = cfg.amp_b.toString();
     (document.getElementById("freq_a")   as HTMLInputElement).value = cfg.freq_a.toString();
     (document.getElementById("freq_b")   as HTMLInputElement).value = cfg.freq_b.toString();
-    (document.getElementById("delta")    as HTMLInputElement).value = (cfg.delta    / Math.PI).toString();
-    (document.getElementById("rotation") as HTMLInputElement).value = (cfg.rotation / Math.PI).toString();
+    (document.getElementById("delta")    as HTMLInputElement).value = (cfg.delta).toString();
+    (document.getElementById("rotation") as HTMLInputElement).value = (cfg.rotation).toString();
 
     (document.getElementById("shoot_bullets") as HTMLInputElement).checked = cfg.draw_bullets;
     (document.getElementById("show_pattern")  as HTMLInputElement).checked = cfg.draw_pattern;
@@ -111,8 +111,8 @@ function apply_config_inputs(inputs: Config_Values): void {
             amp_b: inputs.amp_b,
             freq_a: inputs.freq_a,
             freq_b: inputs.freq_b,
-            delta: inputs.delta,
-            rotation: inputs.rotation,
+            delta: inputs.delta * Math.PI,
+            rotation: inputs.rotation * Math.PI,
         },
         config: {
             speed: inputs.speed,

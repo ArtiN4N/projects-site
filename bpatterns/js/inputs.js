@@ -20,8 +20,8 @@ function read_config_inputs() {
     const amp_b = parseFloat(document.getElementById("amp_b").value);
     const freq_a = parseFloat(document.getElementById("freq_a").value);
     const freq_b = parseFloat(document.getElementById("freq_b").value);
-    const delta = parseFloat(document.getElementById("delta").value) * Math.PI;
-    const rotation = parseFloat(document.getElementById("rotation").value) * Math.PI;
+    const delta = parseFloat(document.getElementById("delta").value);
+    const rotation = parseFloat(document.getElementById("rotation").value);
     const draw_bullets = document.getElementById("shoot_bullets").checked;
     const draw_pattern = document.getElementById("show_pattern").checked;
     return {
@@ -40,8 +40,8 @@ function write_config_inputs(cfg) {
     document.getElementById("amp_b").value = cfg.amp_b.toString();
     document.getElementById("freq_a").value = cfg.freq_a.toString();
     document.getElementById("freq_b").value = cfg.freq_b.toString();
-    document.getElementById("delta").value = (cfg.delta / Math.PI).toString();
-    document.getElementById("rotation").value = (cfg.rotation / Math.PI).toString();
+    document.getElementById("delta").value = (cfg.delta).toString();
+    document.getElementById("rotation").value = (cfg.rotation).toString();
     document.getElementById("shoot_bullets").checked = cfg.draw_bullets;
     document.getElementById("show_pattern").checked = cfg.draw_pattern;
 }
@@ -97,8 +97,8 @@ function apply_config_inputs(inputs) {
             amp_b: inputs.amp_b,
             freq_a: inputs.freq_a,
             freq_b: inputs.freq_b,
-            delta: inputs.delta,
-            rotation: inputs.rotation,
+            delta: inputs.delta * Math.PI,
+            rotation: inputs.rotation * Math.PI,
         },
         config: {
             speed: inputs.speed,
