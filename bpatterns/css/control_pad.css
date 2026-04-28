@@ -80,10 +80,11 @@ div.control_pad {
 }
 
 .control_pad button {
-    width: 30%;
-    height: 60px;
+    width: 25%;
+    height: 50px;
 
-    margin-left: 20px;
+    margin-left: calc(6.25% - 3px);
+
     margin-top: 50px;
 
     font-family: inherit;

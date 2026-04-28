@@ -32,6 +32,9 @@ function epitrochoid_path(t, params) {
     };
 }
 function draw_path_preview(emitter, dt) {
+    if (!show_pattern) {
+        return;
+    }
     const steps = 200;
     const origin_x = canvas.width / 2;
     const origin_y = canvas.height / 2;

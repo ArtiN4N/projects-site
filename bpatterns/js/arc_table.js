@@ -1,5 +1,5 @@
 "use strict";
-function build_arc_table(fn, params, kill_time, speed, base_samples = 500, curvature_threshold = 0.5) {
+function build_arc_table(fn, params, kill_time, speed, base_samples = 1000, curvature_threshold = 0.5) {
     const distances = [0];
     const ts = [0];
     const max_t = kill_time * speed;

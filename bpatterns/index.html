@@ -78,7 +78,16 @@
 				<input type="checkbox" id="shoot_bullets" />
 			</div>
 
-			<button onclick="update_params()">Spawn</button>
+			<div class="input_row">
+				<label for="show_pattern">Show Pattern</label>
+				<input type="checkbox" id="show_pattern" />
+			</div>
+
+			<div class="input_row">
+				<button onclick="update_params()">Spawn</button>
+				<button onclick="save_pattern_config()">Save</button>
+				<button onclick="load_pattern_config()">Load</button>
+			</div>
 		</div>
 
 		<p class="decoration_arrow">→</p>

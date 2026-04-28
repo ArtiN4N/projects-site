@@ -6,7 +6,7 @@ interface Arc_Table {
 
 function build_arc_table(
     fn: Path_Function, params: Path_Parameters, kill_time: number, speed: number,
-    base_samples: number = 500, curvature_threshold: number = 0.5
+    base_samples: number = 1000, curvature_threshold: number = 0.5
 ): Arc_Table {
     const distances: number[] = [0]
     const ts: number[] = [0]

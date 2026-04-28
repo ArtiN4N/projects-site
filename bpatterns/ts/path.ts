@@ -49,6 +49,7 @@ function epitrochoid_path(t: number, params: Path_Parameters): Vector {
 }
 
 function draw_path_preview(emitter: Emitter, dt: number): void {
+    if (!show_pattern) { return }
     const steps = 200
     const origin_x = canvas.width / 2
     const origin_y = canvas.height / 2
